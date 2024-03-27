@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "cf2fb96f-9498-4325-b909-2db53e4e5671",
+		"name": "Payever",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2768197"
+	},
+	"item": [
+		{
+			"name": "Get User from reqres.in",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/user/12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "content-type",
+						"value": "application/json;"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "lastName",
+							"value": "Arash",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Orooji",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "Male",
+							"type": "text"
+						},
+						{
+							"key": "avatar",
+							"value": "data:image/png;base64,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",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Avatar",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/user/65f92a24939c89a4fe0269e2/avatar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"65f92a24939c89a4fe0269e2",
+						"avatar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Avatar",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/user/65f92a24939c89a4fe0269e2/avatar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"user",
+						"65f92a24939c89a4fe0269e2",
+						"avatar"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

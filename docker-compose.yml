@@ -1,35 +1,11 @@
-
-version: "3.8"
-
-services: 
-  mongo:
+version: '3.8'
+services:
+  read-db:
     image: mongo
-    container_name: mongo
-    restart: unless-stopped
     ports:
-      - "27017:27017"
-  mongo-express:
-    image: mongo-express
-    container_name: mexpress
+      - '27017:27017'
     environment:
-      - ME_CONFIG_MONGODB_URL=mongodb://mongo:27017
-      - ME_CONFIG_BASICAUTH_USERNAME=mexpress
-      - ME_CONFIG_BASICAUTH_PASSWORD=mexpress
-    links:
-      - mongo
-    restart: unless-stopped
-    ports:
-      - "8081:8081"
-
-  api: 
-    build: .
-    container_name: api
-    ports:
-      - 3000:3000
-    command: npm run start:dev
-    depends_on:
-      - mongo
-      - rabbitmq
+      MONGODB_DATABASE: 'vf-read-db'
   rabbitmq:
     image: rabbitmq:management
     container_name: rabbitmq
@@ -39,7 +15,25 @@ services:
     volumes:
       - rabbitmqdata:/var/lib/rabbitmq
     hostname: rabbitmq
-
+  event-store:
+    image: mongo
+    ports:
+      - 27018:27017
+    environment:
+      - MONGODB_DATABASE="vf-event-store"
+    command: mongod --replSet vf-event-store-repl-set
+    volumes:
+      - ./scripts/event-store-mongoinit.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+  # api: 
+  #   build: .
+  #   container_name: api
+  #   ports:
+  #     - 3000:3000
+  #   command: npm run start:dev
+  #   depends_on:
+  #     - read-db
+  #     - rabbitmq
+  #     - event-store
 volumes: 
   mongodbdata:
   rabbitmqdata:

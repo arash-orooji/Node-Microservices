@@ -13,6 +13,10 @@ RUN yarn install
 # Bundle app source
 COPY . .
 
+# Unit test
+RUN yarn test:cov
+# RUN tarn test:e2e
+
 # Creates a "dist" folder with the production build
 RUN yarn build
 
