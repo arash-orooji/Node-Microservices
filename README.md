@@ -1,4 +1,4 @@
-# improvement
+# improvements:
 I changed the architecture of this project from the ground up and migrated to a civilized and scalable project.
 
 * Dependency injection
